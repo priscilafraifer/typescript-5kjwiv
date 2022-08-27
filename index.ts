@@ -1,67 +1,19 @@
 // Import stylesheets
 import './style.css';
+import { Person } from './person.ts';
 
-class Person {
-  firstName: string;
-  middleName: string;
-  lastName: string;
-  age: number;
-  email: string;
-  constructor(
-    message1: string,
-    message2: string,
-    message3: string,
-    message4: number,
-    message5: string
-  ) {
-    this.firstName = message1;    
-    this.middleName = message2;
-    this.lastName = message3;
-    this.age = message4;
-    this.email = message5;
-  }
-  greet() {
-    return (
-      'FirstName: ' +
-      this.firstName + 
-      ' '+
-      'MiddleName: ' +
-      this.middleName +
-      ' ' +
-      'LastName' +
-      this.lastName +
-      '! ' +
-      'Voce tem ' +
-      this.age +
-      ' anos '
-    );
-  }
-}
-
-let greeter = new Person('Priscila', 'Vieira', 'Fraifer', 35, 'teste@teste.com');
-
+let persona = new Person('Priscila', 'Vieira', 'Fraifer', 35, [
+  'teste@teste.com',
+]);
 const appClasse: HTMLElement = document.getElementById('app1');
 appClasse.innerHTML = `
-  <h1>Tarefa - Parte 1</h1>
-  <h2>${greeter.greet()}!</h2>
-`;
+  <h1>Tarefa - Classes em Typescript</h1>
+  <h2>${persona.greet()}</h2>
 
-function fullName(person: {
-  name: string;
-  middleName: string;
-  lastName: string;
-  email: string;
-}): string {
-  return person.name + '' + person.middleName + '' + person.lastName + '' + person.email;
-}
-
-const appFunction: HTMLElement = document.getElementById('app2');
-appFunction.innerHTML = `
-<h1>Tarefa - Parte 2</h1>
-<h2>Atributos do objeto do tipo Person: ${fullName({
-  lastName: 'Fraifer ',
-  middleName: 'Vieira ',
-  name: 'Priscila ',
-  email: 'teste@teste.com'
-})}</h2>
+  <h1>Mostrando os atributos do objeto do tipo Person</h1>
+  <h2>${'Primeiro nome: ' + persona.firstName}</h2>
+  <h2>${'Nome do meio: ' + persona.middleName}</h2>
+  <h2>${'Último nome: ' + persona.lastName}</h2>
+  <h2>${'Idade: ' + persona.age + ' anos'}</h2>
+  <h2>${'E-mail: ' + persona.emailList}</h2>
 `;
